@@ -1,0 +1,3 @@
+gradlew.bat eclipse
+
+pause
