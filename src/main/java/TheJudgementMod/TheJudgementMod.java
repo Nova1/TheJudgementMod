@@ -1,6 +1,9 @@
 package TheJudgementMod;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.stats.StatBase;
+import net.minecraft.stats.StatBasic;
+import net.minecraft.util.ChatComponentTranslation;
 import TheJudgementMod.util.ConfigHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -15,6 +18,8 @@ public class TheJudgementMod {
 	public static final String version = "0.1";
 	
 	public CreativeTabs TJMtab = new TJMtab("Judgement Mod");
+    public static StatBase carma = (new StatBasic("stat.carma", new ChatComponentTranslation("stat.carma", new Object[0]))).registerStat();
+
 
 	public void preinit(FMLPreInitializationEvent event) {
 		ConfigHandler.init(event.getSuggestedConfigurationFile(), event.getModLog());
