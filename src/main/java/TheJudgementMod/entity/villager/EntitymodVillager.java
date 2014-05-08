@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
-import TheJudgementMod.Carma;
+import TheJudgementMod.ExtendedPlayer;
 import TheJudgementMod.entity.villager.ai.EntityAIFollowGolem;
 import TheJudgementMod.entity.villager.ai.EntityAILookAtTradePlayer;
 import TheJudgementMod.entity.villager.ai.EntityAIPlay;
@@ -80,6 +80,8 @@ public class EntitymodVillager extends EntityAgeable implements IMerchant, INpc
     /** Selling list of Blacksmith items. */
     public static final Map blacksmithSellingList = new HashMap();
     private static final String __OBFID = "CL_00001707";
+    
+    public static ExtendedPlayer Eplayer;
 
     public EntitymodVillager(World par1World)
     {
@@ -206,20 +208,17 @@ public class EntitymodVillager extends EntityAgeable implements IMerchant, INpc
             {
                 this.setCustomer(par1EntityPlayer);
                 par1EntityPlayer.displayGUIMerchant(this, this.getCustomNameTag());
+                Eplayer.replenishKarma(1);
             }
-            addpoint(1, this.lastBuyingPlayer);
+            Eplayer.replenishKarma(1);
             return true;
         }
         else
         {
-        	addpoint(1, this.lastBuyingPlayer);
             return super.interact(par1EntityPlayer);
         }
     }
 
-    private void addpoint(int amount, String lastBuyingPlayer2) {
-		new Carma(amount, lastBuyingPlayer2);
-	}
 
 	protected void entityInit()
     {
